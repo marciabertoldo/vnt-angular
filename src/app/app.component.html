@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div *ngIf="authService.afAuth.authState | async as user; else showLogin">
+    <p>Hi {{ user.displayName }}! <button class="btn btn-primary social-login-btn social-google" (click)="logout()">Logout</button></p>
+  <app-header></app-header>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+  <ng-template #showLogin>
+    <div class="container-total">
+      <div class="container text-center">
+        <form class="form-signin" data-ember-action="2">
+          <h2 class="form-signin-heading">Sign in</h2>
+          <p>Please login</p>
+          <button class="btn btn-primary social-login-btn social-google" (click)="login()">Login with Google</button>
+        </form>
+      </div>
+    </div>
+  </ng-template>
+</div>
